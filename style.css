@@ -285,3 +285,45 @@ footer{text-align:center;padding:20px;border-top:1px solid rgba(255,255,255,0.03
 .light-mode canvas {
     opacity: 0.55;
 }
+
+
+/* --------------------------- */
+/* 🔥 LINHA NEON ENTRE SEÇÕES */
+/* --------------------------- */
+
+section {
+    position: relative;
+    padding-top: 80px; /* garante espaço acima do neon */
+}
+
+section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    height: 2px;
+    background: linear-gradient(90deg,
+        rgba(0,153,255,0) 0%,
+        #0099ff 50%,
+        rgba(0,153,255,0) 100%
+    );
+    box-shadow: 
+        0 0 8px #0099ff,
+        0 0 15px #0099ff;
+    opacity: 0.8;
+}
+
+/* MODO CLARO – linha neon adaptada */
+.light-mode section::before {
+    background: linear-gradient(90deg,
+        rgba(0,120,255,0) 0%,
+        #007bff 50%,
+        rgba(0,120,255,0) 100%
+    );
+    box-shadow: 
+        0 0 6px #007bff,
+        0 0 10px #007bff;
+    opacity: 0.6;
+}
