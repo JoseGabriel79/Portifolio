@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Portfólio Dark Tech</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- LOADING -->
+<div id="loading">
+    <div class="loader-glow">Loading...</div>
+</div>
+
+  <!-- BACKGROUND ANIMADO: canvas (partículas) + svg linhas -->
+  <canvas id="particles"></canvas>
+  <div id="animatedGradient"></div>
+  <svg id="flowLines" aria-hidden="true"></svg>
+
+  <!-- NAV -->
+  <nav>
+    <h1 class="logo">JoséGabriel<span>.</span></h1>
+
+    <div class="menu-icon" id="menuBtn">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <ul id="menuMobile">
+      <li><a href="#home">Início</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#timeline">Timeline</a></li>
+      <li><a href="#certificados">Certificados</a></li>
+      <li><a href="#contato">Contato</a></li>
+      <li class="switch-area">
+        <span>Tema</span>
+        <button id="themeToggle">🌙</button>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home" class="hero fade">
+    <h2 class="glow big">José Gabriel</h2>
+    <p class="subtitle">Desenvolvedor Full Stack • Criador de Sistemas • Tecnologia é minha linguagem</p>
+    <a href="#projetos" class="btn-glow">Ver Projetos</a>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre" class="container fade">
+    <h2 class="titulo neon">Sobre Mim</h2>
+
+    <div class="sobre-box">
+      <img src="https://via.placeholder.com/350" alt="Foto" class="foto">
+      <div>
+        <p>Sou um desenvolvedor apaixonado por tecnologia, especializado em backend, interfaces modernas e construção de sistemas robustos. Transformo ideias em código funcional e elegante.</p>
+        <p>Experiência com: <strong>Node.js, SQL, Docker, APIs, HTML, CSS, JavaScript</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="container fade">
+    <h2 class="titulo neon">Skills</h2>
+
+    <div class="skills-grid">
+      <div class="skill">
+        <div class="skill-icon">JS</div>
+        <h4>JavaScript</h4>
+        <div class="bar"><div class="bar-fill" style="width:90%"></div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-icon">N</div>
+        <h4>Node.js</h4>
+        <div class="bar"><div class="bar-fill" style="width:85%"></div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-icon">DB</div>
+        <h4>SQL / NoSQL</h4>
+        <div class="bar"><div class="bar-fill" style="width:80%"></div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-icon">UI</div>
+        <h4>UI / CSS</h4>
+        <div class="bar"><div class="bar-fill" style="width:75%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETOS -->
+  <section id="projetos" class="container fade">
+    <h2 class="titulo neon">Projetos</h2>
+
+    <div class="projetos-grid">
+      <div class="card">
+        <img src="https://via.placeholder.com/600x350" alt="">
+        <h3>Projeto 1</h3>
+        <p>Sistema completo com API, dashboard e banco de dados.</p>
+        <a href="#" class="btn-glow small">Repositório</a>
+      </div>
+
+      <div class="card">
+        <img src="https://via.placeholder.com/600x350" alt="">
+        <h3>Projeto 2</h3>
+        <p>Aplicação web responsiva com gráficos e relatórios.</p>
+        <a href="#" class="btn-glow small">Repositório</a>
+      </div>
+
+      <div class="card">
+        <img src="https://via.placeholder.com/600x350" alt="">
+        <h3>Projeto 3</h3>
+        <p>Plataforma com login, upload e gerenciamento interno.</p>
+        <a href="#" class="btn-glow small">Repositório</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section id="timeline" class="container fade">
+    <h2 class="titulo neon">Timeline</h2>
+    <div class="timeline">
+      <div class="event">
+        <div class="dot"></div>
+        <div class="content">
+          <h4>2024 — Projeto X</h4>
+          <p>Lançamento de plataforma com API e painel administrativo.</p>
+        </div>
+      </div>
+
+      <div class="event">
+        <div class="dot"></div>
+        <div class="content">
+          <h4>2023 — Trabalho Y</h4>
+          <p>Integração de serviços e otimização de performance.</p>
+        </div>
+      </div>
+
+      <div class="event">
+        <div class="dot"></div>
+        <div class="content">
+          <h4>2022 — Início</h4>
+          <p>Início da carreira como desenvolvedor full-stack.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICADOS -->
+  <section id="certificados" class="container fade">
+    <h2 class="titulo neon">Certificados</h2>
+    <div class="cert-grid">
+      <div class="cert">Certificado • Curso A</div>
+      <div class="cert">Certificado • Curso B</div>
+      <div class="cert">Certificado • Curso C</div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="container fade">
+    <h2 class="titulo neon">Contato</h2>
+
+    <form class="form">
+      <input type="text" placeholder="Nome">
+      <input type="email" placeholder="Email">
+      <textarea placeholder="Mensagem"></textarea>
+      <button class="btn-glow" type="submit">Enviar</button>
+    </form>
+
+    <div class="social">
+      <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Seu Nome • Todos os direitos reservados.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
