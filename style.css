@@ -327,3 +327,117 @@ section::before {
         0 0 10px #007bff;
     opacity: 0.6;
 }
+
+/* -------------------------------------------------- */
+/* 🔥 LINHA NEON COM PARTÍCULAS PASSANDO (TOP DE CADA SEÇÃO) */
+/* -------------------------------------------------- */
+
+section {
+    position: relative;
+    padding-top: 90px; /* espaço para a linha */
+}
+
+/* LINHA PRINCIPAL */
+section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 2px;
+    background: linear-gradient(90deg,
+        rgba(0,153,255,0) 0%,
+        #0099ff 50%,
+        rgba(0,153,255,0) 100%
+    );
+    box-shadow:
+        0 0 10px #0099ff,
+        0 0 25px #0099ff;
+    opacity: 0.8;
+    overflow: visible;
+}
+
+/* PARTÍCULA ANIMADA */
+section::after {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -5%;
+    width: 8px;
+    height: 8px;
+    background: #00c8ff;
+    border-radius: 50%;
+    box-shadow:
+        0 0 8px #00c8ff,
+        0 0 15px #00c8ff,
+        0 0 25px #00c8ff;
+    animation: particleRun 3s linear infinite;
+}
+
+/* ANIMAÇÃO DA PARTÍCULA */
+@keyframes particleRun {
+    0% {
+        left: -5%;
+        opacity: 0;
+        transform: scale(0.4);
+    }
+    10% {
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        left: 105%;
+        opacity: 0;
+        transform: scale(0.4);
+    }
+}
+
+/* VERSÃO LIGHT MODE */
+.light-mode section::before {
+    background: linear-gradient(90deg,
+        rgba(0,120,255,0) 0%,
+        #007bff 50%,
+        rgba(0,120,255,0) 100%
+    );
+    box-shadow:
+        0 0 8px #007bff,
+        0 0 20px #007bff;
+    opacity: 0.6;
+}
+
+.light-mode section::after {
+    background: #008cff;
+    box-shadow:
+        0 0 6px #008cff,
+        0 0 12px #008cff;
+}
+
+/* -------------------------------------------------- */
+/* ⚡ LINHA NEON – FLUXO ANIMADO TIPO CIRCUITO */
+/* -------------------------------------------------- */
+
+section {
+    position: relative;
+    padding-top: 110px; /* espaço para a linha */
+}
+
+/* Linha base (neon suave) */
+section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    height: 3px;
+    background: rgba(0,255,255,0.25);
+    border-radius: 10px;
+    box-shadow:
+        0 0 6px #4effff,
+        0 0 14px #4effff;
+}
+
+
