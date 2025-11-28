@@ -1,45 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Portfólio Dark Tech</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
 
-    
-    <!-- LOADING -->
-    <div id="loading">
-        <div class="loader-glow">Loading...</div>
-    </div>
-    
+
+  <!-- LOADING -->
+  <div id="loading">
+    <div class="loader-glow">Loading...</div>
+  </div>
+
   <!-- BACKGROUND ANIMADO: canvas (partículas) + svg linhas -->
   <canvas id="particles"></canvas>
   <div id="animatedGradient"></div>
   <svg id="flowLines" aria-hidden="true"></svg>
-  
+
   <!-- NAV -->
   <nav>
-      <h1 class="logo">JoséGabriel<span>.</span></h1>
-      
-      <div class="menu-icon" id="menuBtn">
-          <i class="fa-solid fa-bars"></i>
-        </div>
-        
-        <ul id="menuMobile">
-            <li><a href="#home">Início</a></li>
-            <li><a href="#sobre">Sobre</a></li>
+    <canvas id="nebulaCanvas"></canvas>
+    <canvas id="letterCanvas" width="900" height="500"></canvas>
+
+    <div class="menu-icon" id="menuBtn">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <ul id="menuMobile">
+      <li><a href="#home">Início</a></li>
+      <li><a href="#sobre">Sobre</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projetos">Projetos</a></li>
       <li><a href="#timeline">Timeline</a></li>
       <li><a href="#certificados">Certificados</a></li>
       <li><a href="#contato">Contato</a></li>
       <li class="switch-area">
-          <span>Tema</span>
-          <button id="themeToggle">🌙</button>
-        </li>
+        <span>Tema</span>
+        <button id="themeToggle">🌙</button>
+      </li>
     </ul>
   </nav>
 
@@ -57,7 +60,8 @@
     <div class="sobre-box">
       <img src="https://via.placeholder.com/350" alt="Foto" class="foto">
       <div>
-        <p>Sou um desenvolvedor apaixonado por tecnologia, especializado em backend, interfaces modernas e construção de sistemas robustos. Transformo ideias em código funcional e elegante.</p>
+        <p>Sou um desenvolvedor apaixonado por tecnologia, especializado em backend, interfaces modernas e construção de
+          sistemas robustos. Transformo ideias em código funcional e elegante.</p>
         <p>Experiência com: <strong>Node.js, SQL, Docker, APIs, HTML, CSS, JavaScript</strong>.</p>
       </div>
     </div>
@@ -71,25 +75,33 @@
       <div class="skill">
         <div class="skill-icon">JS</div>
         <h4>JavaScript</h4>
-        <div class="bar"><div class="bar-fill" style="width:90%"></div></div>
+        <div class="bar">
+          <div class="bar-fill" style="width:90%"></div>
+        </div>
       </div>
 
       <div class="skill">
         <div class="skill-icon">N</div>
         <h4>Node.js</h4>
-        <div class="bar"><div class="bar-fill" style="width:85%"></div></div>
+        <div class="bar">
+          <div class="bar-fill" style="width:85%"></div>
+        </div>
       </div>
 
       <div class="skill">
         <div class="skill-icon">DB</div>
         <h4>SQL / NoSQL</h4>
-        <div class="bar"><div class="bar-fill" style="width:80%"></div></div>
+        <div class="bar">
+          <div class="bar-fill" style="width:80%"></div>
+        </div>
       </div>
 
       <div class="skill">
         <div class="skill-icon">UI</div>
         <h4>UI / CSS</h4>
-        <div class="bar"><div class="bar-fill" style="width:75%"></div></div>
+        <div class="bar">
+          <div class="bar-fill" style="width:75%"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -185,5 +197,94 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+// ------------------------------
+// CONFIGURAÇÃO CANVAS
+// ------------------------------
+const nebula = document.getElementById("nebulaCanvas");
+const nctx = nebula.getContext("2d");
+
+function resize() {
+    nebula.width = window.innerWidth;
+    nebula.height = window.innerHeight;
+}
+resize();
+window.onresize = resize;
+
+// ------------------------------
+// NEBULOSA ANIMADA 🌌
+// ------------------------------
+const particles = [];
+
+for (let i = 0; i < 900; i++) {
+    particles.push({
+        x: Math.random() * nebula.width,
+        y: Math.random() * nebula.height,
+        size: Math.random() * 2 + 0.5,
+        speedX: (Math.random() - 0.5) * 0.08,
+        speedY: (Math.random() - 0.5) * 0.08,
+        color: `rgba(${100 + Math.random()*155}, ${50 + Math.random()*80}, ${200 + Math.random()*55}, ${0.05 + Math.random()*0.1})`
+    });
+}
+
+function drawNebula() {
+    nctx.clearRect(0, 0, nebula.width, nebula.height);
+
+    particles.forEach(p => {
+        nctx.beginPath();
+        nctx.fillStyle = p.color;
+        nctx.shadowBlur = 25;
+        nctx.shadowColor = p.color;
+        nctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        nctx.fill();
+
+        p.x += p.speedX;
+        p.y += p.speedY;
+
+        if (p.x < 0) p.x = nebula.width;
+        if (p.x > nebula.width) p.x = 0;
+        if (p.y < 0) p.y = nebula.height;
+        if (p.y > nebula.height) p.y = 0;
+    });
+}
+
+// ------------------------------
+// LETRAS "JG" SOFISTICADAS ✨
+// ------------------------------
+const letterCanvas = document.getElementById("letterCanvas");
+const lctx = letterCanvas.getContext("2d");
+
+function drawLetter(time) {
+    lctx.clearRect(0, 0, letterCanvas.width, letterCanvas.height);
+
+    const glowIntensity = 25 + Math.sin(time * 0.02) * 10;
+
+    lctx.font = "220px serif";
+    lctx.textAlign = "center";
+    lctx.textBaseline = "middle";
+
+    lctx.fillStyle = "rgba(255,255,255,0.88)";
+    lctx.shadowColor = "rgba(120,160,255,1)";
+    lctx.shadowBlur = glowIntensity;
+
+    // AQUI ESTÁ O "JG"
+    lctx.fillText("JG", letterCanvas.width / 2, letterCanvas.height / 2);
+}
+
+// ------------------------------
+// LOOP DE ANIMAÇÃO
+// ------------------------------
+let t = 0;
+
+function animate() {
+    requestAnimationFrame(animate);
+    drawNebula();
+    drawLetter(t);
+    t++;
+}
+
+animate();
+</script>
 </body>
+
 </html>
